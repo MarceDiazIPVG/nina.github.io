@@ -28,17 +28,6 @@ const CATEGORIAS = [
 
 const PRODUCTOS = [
   {
-    id: "torta-pina",
-    nombre: "Torta piña",
-    categoria: "tortas",
-    descripcion: "Sin trozos, puro sabor. Cobertura de crema y piña, el clásico de la casa.",
-    precio: null,
-    extra: "Por encargo · 72 hrs · abono 50%",
-    imagen: "img/productos/ig-03.jpg",
-    fotos: ["img/productos/ig-03.jpg", "img/productos/ig-05.jpg"],
-    destacado: true
-  },
-  {
     id: "torta-naranja",
     nombre: "Torta panqueque naranja",
     categoria: "tortas",
@@ -46,16 +35,6 @@ const PRODUCTOS = [
     precio: null,
     extra: "Por encargo · 72 hrs · abono 50%",
     imagen: "img/productos/ig-04.jpg",
-    destacado: true
-  },
-  {
-    id: "torta-amor",
-    nombre: "Torta amor",
-    categoria: "tortas",
-    descripcion: "Bizcocho, crema, hojuelas y frambuesas. Ideal para celebrar y para regalar.",
-    precio: null,
-    extra: "Por encargo · 72 hrs · abono 50%",
-    imagen: "img/productos/ig-06.jpg",
     destacado: true
   },
   {
