@@ -52,7 +52,7 @@ const PRODUCTOS = [
     id: "torta-amor",
     nombre: "Torta amor",
     categoria: "tortas",
-    descripcion: "Merengue, crema, hojuelas y frambuesas. Ideal para celebrar y para regalar.",
+    descripcion: "Bizcocho, crema, hojuelas y frambuesas. Ideal para celebrar y para regalar.",
     precio: null,
     extra: "Por encargo · 72 hrs · abono 50%",
     imagen: "img/productos/ig-06.jpg",
@@ -66,6 +66,53 @@ const PRODUCTOS = [
     precio: null,
     extra: "Consultar diseño · abono 50%",
     imagen: "img/productos/ig-07.jpg",
+    fotos: [
+      "img/productos/ig-07.jpg",
+      "img/productos/torta-flores.jpg",
+      "img/productos/torta-flores-rojas.jpg",
+      "img/productos/torta-rosas.jpg",
+      "img/productos/torta-comunion.jpg"
+    ],
+    destacado: false
+  },
+  {
+    id: "torta-flores",
+    nombre: "Torta de flores",
+    categoria: "tortas",
+    descripcion: "Cobertura de crema y flores de mantequilla. Ideal para cumpleaños.",
+    precio: null,
+    extra: "Por encargo · 72 hrs · abono 50%",
+    imagen: "img/productos/torta-flores.jpg",
+    destacado: true
+  },
+  {
+    id: "torta-flores-rojas",
+    nombre: "Torta de flores rojas",
+    categoria: "tortas",
+    descripcion: "Cobertura de crema, flores rojas y blancas, y toques de pan de oro.",
+    precio: null,
+    extra: "Por encargo · 72 hrs · abono 50%",
+    imagen: "img/productos/torta-flores-rojas.jpg",
+    destacado: false
+  },
+  {
+    id: "torta-rosas",
+    nombre: "Torta de rosas",
+    categoria: "tortas",
+    descripcion: "Torta redonda con rosas de crema y perlas doradas.",
+    precio: null,
+    extra: "Por encargo · 72 hrs · abono 50%",
+    imagen: "img/productos/torta-rosas.jpg",
+    destacado: false
+  },
+  {
+    id: "torta-comunion",
+    nombre: "Torta de confirmación",
+    categoria: "tortas",
+    descripcion: "Torta rectangular con cruz y paloma. Para confirmación o primera comunión.",
+    precio: null,
+    extra: "Consultar diseño · abono 50%",
+    imagen: "img/productos/torta-comunion.jpg",
     destacado: false
   },
   {
@@ -76,6 +123,26 @@ const PRODUCTOS = [
     precio: null,
     extra: "Por encargo · 72 hrs",
     imagen: "img/productos/ig-09.jpg",
+    destacado: false
+  },
+  {
+    id: "kuchen-manzana",
+    nombre: "Kuchen de manzana",
+    categoria: "kuchen",
+    descripcion: "Kuchen casero con manzana caramelizada. Para once o para compartir.",
+    precio: null,
+    extra: "Por encargo · 72 hrs",
+    imagen: "img/productos/kuchen-manzana.jpg",
+    destacado: true
+  },
+  {
+    id: "cheesecake-frambuesa",
+    nombre: "Cheesecake de frambuesa",
+    categoria: "kuchen",
+    descripcion: "Base de galleta, relleno cremoso y frambuesas. Pídelo por DM.",
+    precio: null,
+    extra: "Por encargo · 72 hrs",
+    imagen: "img/productos/cheesecake-frambuesa.jpg",
     destacado: false
   },
   {
