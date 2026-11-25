@@ -1,7 +1,7 @@
 /* =========================================================
    NINA — datos editables
    Fotos y textos tomados del Instagram @nina.patisserie1
-   Para cargar un precio, poné el número en pesos (ej: 18000).
+   Para cargar un precio, pon el número en pesos (ej: 18000).
    Si queda null, la web muestra "Consultar".
    ========================================================= */
 
