@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NINA — Carta de precios</title>
+  <meta name="description" content="Carta de precios de NINA. Repostería casera en Chiguayante y Concepción. Pide por Instagram @nina.patisserie1.">
+  <link rel="canonical" href="https://www.instagram.com/nina.patisserie1/">
+  <link rel="icon" href="img/logo-nina.jpg" type="image/jpeg">
+  <meta property="og:title" content="NINA — Carta de precios">
+  <meta property="og:description" content="Repostería casera. Mira los precios y pide por Instagram.">
+  <meta property="og:image" content="img/logo-nina.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.instagram.com/nina.patisserie1/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "NINA",
+    "image": "img/logo-nina.jpg",
+    "url": "https://www.instagram.com/nina.patisserie1/",
+    "sameAs": ["https://www.instagram.com/nina.patisserie1/"],
+    "areaServed": ["Chiguayante", "Concepción", "UdeC"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#precios">Ir a la carta de precios</a>
+
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="brand" href="#inicio">
+        <img src="img/logo-nina.jpg" alt="NINA">
+        <span>
+          <strong data-brand>NINA</strong>
+          <small data-handle>@nina.patisserie1</small>
+        </span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-label="Abrir menú">
+        <span></span>
+      </button>
+      <nav class="nav" id="nav-links">
+        <a href="#favoritos">Favoritos</a>
+        <a href="#precios">Precios</a>
+        <a href="#pedir">Cómo pedir</a>
+        <a class="btn btn--wine" data-ig href="https://www.instagram.com/nina.patisserie1/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div>
+          <p class="eyebrow">Carta de precios</p>
+          <h1>Nina<span>Repostería casera</span></h1>
+          <svg class="ornament" viewBox="0 0 120 20" aria-hidden="true">
+            <path d="M2 10h40M78 10h40M60 2c8 0 8 16 0 16s-8-16 0-16z" fill="none" stroke="#b08968" stroke-width="1.2"/>
+          </svg>
+          <p class="lead">Tortas y dulces hechos en casa. Mira el catálogo y pide el valor final por Instagram.</p>
+          <div class="hero__actions">
+            <a class="btn btn--wine" href="#precios">Ver precios</a>
+            <a class="btn btn--ghost" data-pedido href="https://ig.me/m/nina.patisserie1" target="_blank" rel="noopener">
+              <span data-pedido-label>Pedir por Instagram</span>
+            </a>
+          </div>
+          <div class="hero__meta">
+            <span data-ciudad>Entregas en Chiguayante, Centro CCP y UdeC</span>
+            <span data-horario>Pedidos con 72 hrs de anticipación</span>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <img src="img/productos/ig-04.jpg" alt="Torta panqueque naranja de NINA">
+          <div class="price-badge">
+            <span>Abono</span>
+            <strong>50%</strong>
+            <span data-badge-hint>al confirmar el pedido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="favoritos">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Lo más pedido</p>
+            <h2>Favoritos de la casa</h2>
+            <p class="muted">Los dulces que más se piden en Instagram.</p>
+          </div>
+        </div>
+        <div class="featured" id="destacados"></div>
+      </div>
+    </section>
+
+    <section class="section" id="precios">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Catálogo</p>
+            <h2>Precios</h2>
+            <p class="muted" data-nota>En Instagram todavía no hay lista de precios. El valor se confirma al pedir por DM.</p>
+          </div>
+          <p class="muted">Actualizado: <span data-actualizado>Noviembre 2026</span></p>
+        </div>
+
+        <div class="toolbar">
+          <div class="chips" id="filtros"></div>
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M20 20l-3-3"></path>
+            </svg>
+            <input id="buscar" type="search" placeholder="Buscar un dulce..." autocomplete="off">
+          </div>
+          <div class="view-toggle" role="tablist" aria-label="Cambiar vista">
+            <button type="button" class="is-active" data-vista="catalogo">Catálogo</button>
+            <button type="button" data-vista="lista">Lista de precios</button>
+          </div>
+        </div>
+
+        <div id="vista-catalogo">
+          <div class="grid" id="catalogo"></div>
+          <p class="empty" id="vacio" hidden>No encontramos ese producto. Escríbenos por Instagram y lo vemos.</p>
+        </div>
+        <div id="vista-lista" hidden>
+          <div id="lista"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="pedir">
+      <div class="wrap pedido">
+        <div>
+          <p class="eyebrow">Encargos</p>
+          <h2>Cómo pedir</h2>
+          <p class="lead">Elige el producto, escríbenos y coordinamos sabor, fecha y entrega.</p>
+          <div class="steps">
+            <div class="step">
+              <span class="num">1</span>
+              <div>
+                <strong>Elige de la carta</strong>
+                <p class="muted">Tortas, tartas o individuales. Si quieres algo a medida, también se puede.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num">2</span>
+              <div>
+                <strong>Escríbenos</strong>
+                <p class="muted">Manda un mensaje por Instagram con el producto, la fecha y la cantidad.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num">3</span>
+              <div>
+                <strong>Confirmamos el pedido</strong>
+                <p class="muted">Te pasamos disponibilidad, seña y el detalle final. Pedidos con 72 hrs de anticipación.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero__actions">
+            <a class="btn btn--gold" data-pedido href="https://ig.me/m/nina.patisserie1" target="_blank" rel="noopener">
+              <span data-pedido-label>Pedir por Instagram</span>
+            </a>
+            <a class="btn btn--ghost" data-ig href="https://www.instagram.com/nina.patisserie1/" target="_blank" rel="noopener">Ver el perfil</a>
+          </div>
+        </div>
+        <aside class="ig-card">
+          <header>
+            <div class="avatar" aria-hidden="true"><img src="img/logo-nina.jpg" alt=""></div>
+            <div>
+              <strong data-brand>NINA</strong>
+              <div data-handle>@nina.patisserie1</div>
+            </div>
+          </header>
+          <p>Repostería casera. Pedidos con 72 hrs de anticipación. Entregas en Chiguayante, Centro CCP y UdeC (cobro adicional). Abono del 50%.</p>
+          <p class="muted">Usa esta página como link in bio: tus clientas ven precios al toque y te escriben a Instagram.</p>
+          <a class="btn btn--wine" data-ig href="https://www.instagram.com/nina.patisserie1/" target="_blank" rel="noopener">Seguir en Instagram</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p><span data-brand>NINA</span> · <span data-handle>@nina.patisserie1</span></p>
+      <p>© <span id="anio">2026</span> · Los precios pueden variar según temporada y personalización.</p>
+    </div>
+  </footer>
+
+  <a class="float-ig" data-ig href="https://www.instagram.com/nina.patisserie1/" target="_blank" rel="noopener" aria-label="Abrir Instagram de Nina">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"></circle>
+    </svg>
+  </a>
+
+  <dialog class="modal" id="modal">
+    <button class="close" id="modal-cerrar" type="button" aria-label="Cerrar">×</button>
+    <div class="modal__grid">
+      <img id="modal-img" alt="">
+      <div class="modal__copy">
+        <small class="cat" id="modal-cat"></small>
+        <h3 id="modal-titulo"></h3>
+        <p id="modal-desc"></p>
+        <p class="muted" id="modal-extra"></p>
+        <strong id="modal-precio"></strong>
+        <a class="btn btn--wine" id="modal-pedir" href="#" target="_blank" rel="noopener">Pedir</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/datos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
