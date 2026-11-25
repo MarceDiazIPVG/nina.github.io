@@ -5,7 +5,9 @@
   const state = {
     categoria: "todos",
     busqueda: "",
-    vista: "catalogo"
+    vista: "catalogo",
+    modalId: null,
+    slide: 0
   };
 
   const tienePrecio = (n) => typeof n === "number" && Number.isFinite(n);
@@ -58,6 +60,20 @@
     });
   }
 
+  function slidesDe(p) {
+    const fotos = p.fotos && p.fotos.length ? p.fotos : [p.imagen];
+    const slides = fotos.map((src) => ({ tipo: "img", src }));
+    if (p.video) slides.push({ tipo: "video", src: p.video, poster: p.imagen });
+    return slides;
+  }
+
+  function mediaFlag(p) {
+    const n = slidesDe(p).length;
+    if (n <= 1) return "";
+    if (p.video) return `<span class="media-flag">Fotos y video</span>`;
+    return `<span class="media-flag">${n} fotos</span>`;
+  }
+
   function renderMarca() {
     $$("[data-brand]").forEach((el) => (el.textContent = CONFIG.nombre));
     $$("[data-handle]").forEach((el) => (el.textContent = "@" + CONFIG.handle));
@@ -106,6 +122,7 @@
         <div class="card__media">
           <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
           <span class="pill">Favorito</span>
+          ${mediaFlag(p)}
         </div>
         <div class="card__body">
           <h3>${p.nombre}</h3>
@@ -136,9 +153,10 @@
     grid.innerHTML = items
       .map(
         (p) => `
-      <article class="card" data-id="${p.id}">
+      <article class="card card--carta" data-id="${p.id}">
         <div class="card__media">
           <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
+          ${mediaFlag(p)}
         </div>
         <div class="card__body">
           <small class="cat">${categoriaNombre(p.categoria)}</small>
@@ -192,12 +210,55 @@
     return CATEGORIAS.find((c) => c.id === id)?.nombre || id;
   }
 
+  function pausarVideo() {
+    const video = $("#modal-video");
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+  }
+
+  function mostrarSlide() {
+    const p = PRODUCTOS.find((x) => x.id === state.modalId);
+    if (!p) return;
+    const slides = slidesDe(p);
+    const i = ((state.slide % slides.length) + slides.length) % slides.length;
+    state.slide = i;
+    const actual = slides[i];
+    const img = $("#modal-img");
+    const video = $("#modal-video");
+    const modal = $("#modal");
+
+    pausarVideo();
+    if (actual.tipo === "video") {
+      img.hidden = true;
+      video.hidden = false;
+      video.poster = actual.poster || p.imagen;
+      video.src = actual.src;
+    } else {
+      video.hidden = true;
+      img.hidden = false;
+      img.src = actual.src;
+      img.alt = p.nombre;
+    }
+
+    modal.classList.toggle("is-single", slides.length < 2);
+    const dots = $("#modal-dots");
+    dots.innerHTML = slides
+      .map(
+        (s, idx) =>
+          `<button type="button" class="${idx === i ? "is-active" : ""}" data-slide="${idx}" aria-label="${
+            s.tipo === "video" ? "Ver video" : "Ver foto " + (idx + 1)
+          }"></button>`
+      )
+      .join("");
+  }
+
   function abrirModal(id) {
     const p = PRODUCTOS.find((x) => x.id === id);
     if (!p) return;
     const modal = $("#modal");
-    $("#modal-img").src = p.imagen;
-    $("#modal-img").alt = p.nombre;
+    state.modalId = id;
+    state.slide = 0;
     $("#modal-cat").textContent = categoriaNombre(p.categoria);
     $("#modal-titulo").textContent = p.nombre;
     $("#modal-desc").textContent = p.descripcion;
@@ -207,7 +268,17 @@
     const btn = $("#modal-pedir");
     btn.href = pedidoUrl(p);
     btn.textContent = CONFIG.whatsapp ? "Pedir por WhatsApp" : "Pedir por Instagram";
+    mostrarSlide();
+    const y = window.scrollY;
     modal.showModal();
+    window.scrollTo({ top: y, left: 0, behavior: "auto" });
+  }
+
+  function cambiarSlide(delta) {
+    const p = PRODUCTOS.find((x) => x.id === state.modalId);
+    if (!p) return;
+    state.slide += delta;
+    mostrarSlide();
   }
 
   function setVista(vista) {
@@ -240,15 +311,37 @@
     });
 
     document.addEventListener("click", (e) => {
+      if (e.target.closest("dialog")) return;
       const card = e.target.closest("[data-id]");
       if (!card) return;
       if (e.target.closest("a")) return;
+      e.preventDefault();
       abrirModal(card.dataset.id);
     });
 
     $("#modal-cerrar").addEventListener("click", () => $("#modal").close());
     $("#modal").addEventListener("click", (e) => {
       if (e.target === e.currentTarget) e.currentTarget.close();
+    });
+    $("#modal").addEventListener("close", pausarVideo);
+    $("#modal-prev").addEventListener("click", (e) => {
+      e.stopPropagation();
+      cambiarSlide(-1);
+    });
+    $("#modal-next").addEventListener("click", (e) => {
+      e.stopPropagation();
+      cambiarSlide(1);
+    });
+    $("#modal-dots").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-slide]");
+      if (!btn) return;
+      state.slide = Number(btn.dataset.slide);
+      mostrarSlide();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!$("#modal").open) return;
+      if (e.key === "ArrowLeft") cambiarSlide(-1);
+      if (e.key === "ArrowRight") cambiarSlide(1);
     });
 
     const year = new Date().getFullYear();

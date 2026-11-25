@@ -124,7 +124,7 @@
         </div>
 
         <div id="vista-catalogo">
-          <div class="grid" id="catalogo"></div>
+          <div class="carta" id="catalogo"></div>
           <p class="empty" id="vacio" hidden>No encontramos ese producto. Escríbenos por Instagram y lo vemos.</p>
         </div>
         <div id="vista-lista" hidden>
@@ -203,14 +203,20 @@
   <dialog class="modal" id="modal">
     <button class="close" id="modal-cerrar" type="button" aria-label="Cerrar">×</button>
     <div class="modal__grid">
-      <img id="modal-img" alt="">
+      <div class="modal__media">
+        <img id="modal-img" alt="">
+        <video id="modal-video" controls playsinline preload="metadata" hidden></video>
+        <button type="button" class="modal__nav modal__nav--prev" id="modal-prev" aria-label="Foto anterior">‹</button>
+        <button type="button" class="modal__nav modal__nav--next" id="modal-next" aria-label="Foto siguiente">›</button>
+        <div class="modal__dots" id="modal-dots"></div>
+      </div>
       <div class="modal__copy">
         <small class="cat" id="modal-cat"></small>
         <h3 id="modal-titulo"></h3>
         <p id="modal-desc"></p>
         <p class="muted" id="modal-extra"></p>
         <strong id="modal-precio"></strong>
-        <a class="btn btn--wine" id="modal-pedir" href="#" target="_blank" rel="noopener">Pedir</a>
+        <a class="btn btn--wine" id="modal-pedir" href="https://ig.me/m/nina.patisserie1" target="_blank" rel="noopener">Pedir</a>
       </div>
     </div>
   </dialog>

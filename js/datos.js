@@ -35,6 +35,7 @@ const PRODUCTOS = [
     precio: null,
     extra: "Por encargo · 72 hrs · abono 50%",
     imagen: "img/productos/ig-03.jpg",
+    fotos: ["img/productos/ig-03.jpg", "img/productos/ig-05.jpg"],
     destacado: true
   },
   {
@@ -84,7 +85,9 @@ const PRODUCTOS = [
     descripcion: "Queque de naranja con glaseado. Para once o para compartir.",
     precio: null,
     extra: "Por encargo · 72 hrs",
-    imagen: "img/productos/queque-naranja.jpg",
+    imagen: "img/productos/queque-naranja-2.jpg?v=2",
+    fotos: ["img/productos/queque-naranja-2.jpg?v=2", "img/productos/queque-naranja.jpg?v=2"],
+    video: "img/productos/queque-naranja.mp4",
     destacado: false
   },
   {
@@ -114,7 +117,9 @@ const PRODUCTOS = [
     descripcion: "Brazo de reina de plátano, especial para la once.",
     precio: null,
     extra: "Por encargo · 72 hrs",
-    imagen: "img/productos/brazo-reina.jpg",
+    imagen: "img/productos/brazo-reina.jpg?v=2",
+    fotos: ["img/productos/brazo-reina.jpg?v=2", "img/productos/brazo-reina-2.jpg?v=2"],
+    video: "img/productos/brazo-reina.mp4",
     destacado: false
   },
   {
@@ -124,7 +129,9 @@ const PRODUCTOS = [
     descripcion: "Cupcakes con frosting y toque de manjar. Irresistibles.",
     precio: null,
     extra: "Consultar cantidad",
-    imagen: "img/productos/cupcakes-snickers.jpg",
+    imagen: "img/productos/cupcakes-snickers.jpg?v=2",
+    fotos: ["img/productos/cupcakes-snickers.jpg?v=2", "img/productos/cupcakes-2.jpg?v=2"],
+    video: "img/productos/cupcakes-snickers.mp4",
     destacado: false
   }
 ];
