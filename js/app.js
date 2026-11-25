@@ -210,11 +210,28 @@
     return CATEGORIAS.find((c) => c.id === id)?.nombre || id;
   }
 
-  function pausarVideo() {
+  function quitarVideo() {
     const video = $("#modal-video");
+    if (!video) return;
     video.pause();
     video.removeAttribute("src");
+    video.removeAttribute("poster");
     video.load();
+    video.remove();
+  }
+
+  function ponerVideo() {
+    let video = $("#modal-video");
+    if (video) return video;
+    video = document.createElement("video");
+    video.id = "modal-video";
+    video.controls = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.preload = "metadata";
+    $("#modal-img").after(video);
+    return video;
   }
 
   function mostrarSlide() {
@@ -225,17 +242,15 @@
     state.slide = i;
     const actual = slides[i];
     const img = $("#modal-img");
-    const video = $("#modal-video");
     const modal = $("#modal");
 
-    pausarVideo();
     if (actual.tipo === "video") {
       img.hidden = true;
-      video.hidden = false;
+      const video = ponerVideo();
       video.poster = actual.poster || p.imagen;
       video.src = actual.src;
     } else {
-      video.hidden = true;
+      quitarVideo();
       img.hidden = false;
       img.src = actual.src;
       img.alt = p.nombre;
@@ -323,7 +338,7 @@
     $("#modal").addEventListener("click", (e) => {
       if (e.target === e.currentTarget) e.currentTarget.close();
     });
-    $("#modal").addEventListener("close", pausarVideo);
+    $("#modal").addEventListener("close", quitarVideo);
     $("#modal-prev").addEventListener("click", (e) => {
       e.stopPropagation();
       cambiarSlide(-1);

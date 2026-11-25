@@ -794,6 +794,11 @@ a {
   display: block;
 }
 
+.modal__media img[hidden],
+.modal__media video[hidden] {
+  display: none !important;
+}
+
 .modal__nav {
   position: absolute;
   top: 50%;
